@@ -1,0 +1,22 @@
+<!-- make sure you are adding FormsModule in app.module.ts for ngModel work -->
+<!-- <meta http-equiv="X-Frame-Options" content="sameorigin"> -->
+<div>
+  <div>
+    <iframe width="100%" height="300" [src]="video.url | safe" frameborder="0"  allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+  <form>
+    <div *ngIf="editTitle" class="form-group">
+      <input type="input" class="form-control" name="title" required placeholder="title" [(ngModel)]="video.title">
+    </div>
+    <h3 *ngIf="!editTitle" (click)="onTitleClick()">{{video.title}}</h3>
+    <div class="form-group">
+      <input type="input" class="form-control" name="url" required placeholder="youtube url" [(ngModel)]="video.url">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="description" required placeholder="description" [(ngModel)]="video.description"></textarea>
+    </div>
+    <button type="button" (click)="updateVideo()" class="btn btn-success">Update</button>
+    <button type="button" (click)="deleteVideo()" class="btn btn-danger">Delete</button>
+  </form>
+</div>
+<!-- https://www.youtube.com/watch?v=pWbMrx5rVBE -->

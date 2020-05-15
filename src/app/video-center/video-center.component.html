@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-9">
+    <div *ngIf="!hidenewVideo">
+      <h2>New Video</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitAddVideo(form.value)" class="well">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" required name="title" ngModel>
+          <!-- attr ngModel used so that the values within the input fields are accessable using this form reference -->
+        </div>
+        <div class="form-group">
+            <label for="url">Url</label>
+            <input type="text" class="form-control" required name="url" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" required name="description" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form>
+    </div>
+    <video-detail (updateVideoEvent)="onUpdateVideoEvent($event)" (deleteVideoEvent)="onDeleteVideoEvent($event)" *ngIf="selectedVideo && hidenewVideo" [video]="selectedVideo"></video-detail>
+  </div>
+  <div class="col-sm-3">
+<!-- from video center= {{videosList}} -->
+    
+    <!--here we are capturing the SelectVideo event>> when SelectVideo event will be raised then we will call onSelectVideo and pass the event -->
+    <button style="margin-bottom: 5px" type="button" (click)="newVideo()" class="btn btn-success btn-block"> + New Video</button>
+    <video-list *ngIf="videosList" (SelectVideo)="onSelectVideo($event)" [videosL]="videosList"></video-list> 
+  </div>
+</div>
