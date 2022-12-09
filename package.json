@@ -6,7 +6,7 @@
     "rxjs": "5.5.12",
     "helmet": "3.22.0",
     "core-js": "2.6.11",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "zone.js": "0.8.29",
     "mongoose": "5.9.14",
     "bootstrap": "4.5.0",
